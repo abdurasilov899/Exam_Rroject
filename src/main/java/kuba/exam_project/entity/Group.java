@@ -31,7 +31,6 @@ public class Group {
     private LocalDate finish;
 
     @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-     @JsonIgnore
     private List<Course> courses;
 
     @OneToMany(mappedBy="group", fetch=FetchType.EAGER)

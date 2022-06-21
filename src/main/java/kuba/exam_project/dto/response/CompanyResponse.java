@@ -8,8 +8,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class CompanyResponse {
-
     private String name;
-    private String localDate;
-    private LocalDate localD;
+    private String localCountry;
+    private LocalDate wasCreated;
 }

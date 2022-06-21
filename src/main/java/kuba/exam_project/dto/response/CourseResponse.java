@@ -9,4 +9,5 @@ public class CourseResponse {
 
     private String courseName;
     private String duration;
+
 }

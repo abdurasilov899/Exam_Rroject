@@ -4,6 +4,7 @@ import kuba.exam_project.entity.enums.StudyFormat;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Getter

@@ -1,5 +1,6 @@
 package kuba.exam_project.dto.request;
 
+import kuba.exam_project.entity.Company;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +9,5 @@ import lombok.Setter;
 public class CourseRequest {
 
     private String courseName;
-    private  String duration;
+    private String duration;
 }

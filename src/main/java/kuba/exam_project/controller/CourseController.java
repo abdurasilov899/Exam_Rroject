@@ -17,9 +17,9 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @PostMapping("/creat")
-    public CourseResponse creat(@RequestBody CourseRequest request) {
-        return courseService.creat(request);
+    @PostMapping("/creat/{companyId}")
+    public CourseResponse creat(@RequestBody CourseRequest request,@PathVariable Long companyId) {
+        return courseService.creat(request,companyId);
     }
 
     @PutMapping("/update/{id}")

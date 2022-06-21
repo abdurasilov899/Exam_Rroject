@@ -14,14 +14,14 @@ public class GroupEditMapper {
         }
         Group group = new Group();
         group.setGroupName(request.getGroupName());
-        group.setStart(LocalDate.EPOCH);
-        group.setFinish(LocalDate.EPOCH);
+        group.setStart(request.getStart());
+        group.setFinish(request.getFinish());
         return group;
     }
 
     public void update(Group group, GroupRequest request) {
         group.setGroupName(request.getGroupName());
-        group.setStart(LocalDate.EPOCH);
-        group.setFinish(LocalDate.EPOCH);
+        group.setStart(request.getStart());
+        group.setFinish(request.getFinish());
     }
 }

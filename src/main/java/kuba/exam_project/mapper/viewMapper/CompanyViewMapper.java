@@ -15,8 +15,8 @@ public class CompanyViewMapper {
         }
         CompanyResponse response = new CompanyResponse();
         response.setName(company.getName());
-        response.setLocalDate(company.getLocalCountry());
-        response.setLocalD(company.getLocalDate());
+        response.setLocalCountry(company.getLocalCountry());
+        response.setWasCreated(company.getLocalDate());
         return response;
     }
 

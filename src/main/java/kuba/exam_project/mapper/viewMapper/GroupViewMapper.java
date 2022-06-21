@@ -20,8 +20,8 @@ public class GroupViewMapper {
         GroupResponse response =
                 new GroupResponse();
         response.setGroupName(group.getGroupName());
-        response.setStart(LocalDate.EPOCH.format(DateTimeFormatter.ofPattern("Date", Locale.getDefault())));
-        response.setFinish(LocalDate.EPOCH.format(DateTimeFormatter.ofPattern("Date", Locale.getDefault())));
+        response.setStart(group.getStart());
+        response.setFinish(group.getFinish());
         return response;
     }
 
