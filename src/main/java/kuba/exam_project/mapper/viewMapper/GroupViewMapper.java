@@ -1,6 +1,7 @@
 package kuba.exam_project.mapper.viewMapper;
 
 import kuba.exam_project.dto.response.GroupResponse;
+import kuba.exam_project.entity.Course;
 import kuba.exam_project.entity.Group;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,12 @@ public class GroupViewMapper {
         response.setGroupName(group.getGroupName());
         response.setStart(group.getStart());
         response.setFinish(group.getFinish());
+
+        List<String> courseName = new ArrayList<>();
+        for (Course course : group.getCourses()) {
+            courseName.add(course.getCourseName());
+            response.setCoursesName(courseName);
+        }
         return response;
     }
 

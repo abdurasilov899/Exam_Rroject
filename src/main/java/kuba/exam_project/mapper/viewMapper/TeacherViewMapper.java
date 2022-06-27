@@ -18,6 +18,7 @@ public class TeacherViewMapper {
         TeacherResponse response = new TeacherResponse();
         response.setName(teacher.getName());
         response.setSurname(teacher.getSurname());
+        response.setCourseName(teacher.getCourse().getCourseName());
         return response;
     }
 

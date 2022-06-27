@@ -17,6 +17,7 @@ public class CourseViewMapper {
         CourseResponse courseResponse = new CourseResponse();
         courseResponse.setCourseName(course.getCourseName());
         courseResponse.setDuration(course.getDuration());
+        courseResponse.setCompanyName(course.getCompany().getName());
         return courseResponse;
     }
 

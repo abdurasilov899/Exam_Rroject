@@ -10,5 +10,6 @@ public class TeacherRequest {
 
     private String name;
     private String surname;
+    private Long courseId;
 
 }

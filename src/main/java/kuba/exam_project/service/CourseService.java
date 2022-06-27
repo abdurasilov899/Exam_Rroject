@@ -9,6 +9,7 @@ import kuba.exam_project.repository.CompanyRepository;
 import kuba.exam_project.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 
@@ -32,7 +33,14 @@ public class CourseService {
     public CourseResponse creat(CourseRequest request,Long companyId) {
         Course course = editMapper.creat(request);
         course.setCompany(companyRepository.getById(companyId));
-        repository.save(course);
+        try{
+            repository.save(course);
+        }
+        catch (Exception e){
+            throw new NotFoundException(String.format("There is no company with id: %s", companyId));
+        }
+            repository.save(course);
+
         return viewMapper.viewCourse(course);
     }
 

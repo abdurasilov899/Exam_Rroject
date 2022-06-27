@@ -28,7 +28,7 @@ public class Company {
             cascade = {CascadeType.MERGE,CascadeType.REMOVE},mappedBy = "company")
     private List<Course> courses;
 
-    public void  setCourse(Course course){
-        this.courses.add(course);
-    }
+//    public void  setCourse(Course course){
+  //      this.courses.add(course);
+  //  }
 }
