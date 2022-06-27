@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -27,17 +28,23 @@ public class GroupService {
     private final CourseRepository courseRepository;
 
 
-    public GroupResponse creat(GroupRequest request) {
+//    public GroupResponse creat(GroupRequest request) {
+//        Group group = editMapper.creat(request);
+//        repository.save(group);
+//        return viewMapper.viewGroup(group);
+//    }
+    public GroupResponse create(GroupRequest request) {
         Group group = editMapper.creat(request);
-        group.setCourses(getCoursesToGroup(request.getCourse()));
+        Group veryGroup=checkName(group);
+        veryGroup.setCourses(getCoursesToGroup(request.getCourse()));
         repository.save(group);
         return viewMapper.viewGroup(group);
     }
 
-    private List<Course> getCoursesToGroup(List<Long> courseId) {
+    private List<Course> getCoursesToGroup(List<Long> courseId ){
         List<Course> courses = new ArrayList<>();
         for (Long course : courseId) {
-            courses.add(courseRepository.findById(course)
+            courses.add( courseRepository.findById(course)
                     .orElseThrow(() -> new ThisNotFoundException(
                             "Course whit id = " + courseId + " not found!"
                     ))
@@ -65,5 +72,17 @@ public class GroupService {
 
     public List<GroupResponse> all() {
         return viewMapper.view(repository.findAll());
+    }
+    public Group checkName(Group group){
+        List<Group> groups = repository.findAll();
+        for (Group gr : groups) {
+            if (Objects.equals(gr.getGroupName(), group.getGroupName())){
+                throw new ThisNotFoundException(
+                        "There is a group with that name : "+group.getGroupName()
+                                +"! Need to create with different names."
+                );
+            }
+        }
+        return group;
     }
 }

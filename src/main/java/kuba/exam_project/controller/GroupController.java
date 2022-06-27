@@ -23,7 +23,7 @@ public class GroupController {
     @PostMapping("/create")
     @Operation(summary = "creat group",description = "we can create group")
     public GroupResponse creat(@RequestBody GroupRequest request) {
-        return service.creat(request);
+        return service.create(request);
     }
 
     @PutMapping("/update/{id}")

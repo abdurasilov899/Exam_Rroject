@@ -30,45 +30,32 @@ public class TeacherService {
         this.viewMapper = viewMapper;
     }
 
-//    public TeacherResponse creat(TeacherRequest request) {
-//        Teacher teacher = editMapper.creat(request);
-//        Course course = teacher.getCourse();
-//        if (course == null){
-//            repository.save(teacher);
-//        }else {
-//            throw new RuntimeException(
-//                    "Teacher more one!"
-//            );
-//        }
-//
-//        return viewMapper.viewTeacher(teacher);
-//    }
-    public TeacherResponse create(TeacherRequest request) throws HttpClientErrorException.BadRequest {
+    public TeacherResponse create(TeacherRequest request){
         Teacher teacher = editMapper.creat(request);
         Course curse = getCourseToTeacher(request.getCourseId());
         Teacher courseTeacher = curse.getTeacher();
-        if (courseTeacher == null){
+        if (courseTeacher == null) {
             teacher.setCourse(curse);
             repository.save(teacher);
-        }else {
+        } else {
             throw new ThisNotFoundException(
                     "This course has a teacher !" +
-                    " Name teacher: "+ courseTeacher.getName()+"!");
+                            " Name teacher: " + courseTeacher.getName() + "!");
         }
 
         return viewMapper.viewTeacher(teacher);
     }
 
-    private Course getCourseToTeacher(Long id){
+    private Course getCourseToTeacher(Long id) {
         return courseRepository.findById(id)
-                .orElseThrow( () -> new ThisNotFoundException(
-                        "Course whit id = " +id +" not found!"
+                .orElseThrow(() -> new ThisNotFoundException(
+                        "Course whit id = " + id + " not found!"
                 ));
     }
 
     public TeacherResponse update(long id, TeacherRequest request) {
         Teacher teacher = repository.findById(id).get();
-        repository.save(teacher);
+        editMapper.update(teacher,request);
         return viewMapper.viewTeacher(teacher);
     }
 

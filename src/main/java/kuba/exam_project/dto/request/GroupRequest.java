@@ -10,8 +10,8 @@ import java.util.List;
 @Setter
 public class GroupRequest {
 
-    private String GroupName;
-    private LocalDate Start;
+    private String groupName;
+    private LocalDate start;
     private LocalDate finish;
     private List<Long> course;
 }
